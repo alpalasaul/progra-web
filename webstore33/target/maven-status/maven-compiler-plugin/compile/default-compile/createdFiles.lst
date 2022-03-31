@@ -1,0 +1,5 @@
+com\krypton\webstore3\domain\Product.class
+com\krypton\webstore3\domain\repository\impl\InMemoryProductRepository$ProductMapper.class
+com\krypton\webstore3\domain\repository\impl\InMemoryProductRepository.class
+com\krypton\webstore3\domain\repository\impl\InMemoryProductRepository$1.class
+com\krypton\webstore3\domain\repository\ProductRepository.class

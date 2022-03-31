@@ -1,0 +1,19 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        
+    </package>
+    
+    <package name="paquete1" namespace="/paquete1" extends= "struts-default">
+    
+        <action name="saludo" class="miejemplo.Saludo">
+            <result name="ok">/saludo.jsp</result>
+        </action>
+        
+    </package>
+    
+</struts>

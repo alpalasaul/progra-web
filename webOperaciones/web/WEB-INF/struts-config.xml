@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  
+Programación Web
+Tema: Modelo Vista Controlador utilizando Framework Struts (Introducción)
+Julio César Mendoza
+
+Proyecto: webOperaciones
+Archivo : struts-config.xml
+
+Localización: WEB-INF , Configuration Files
+
+        
+
+-->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  
+    <!--
+       La clase ValidacionForm.java toma el nombre lógico de "ValidacionForm"
+    -->
+    
+    <form-beans>
+        <form-bean name="ValidacionForm" type="controladores_form.ValidacionForm"/>
+    </form-beans>
+   
+        
+    <global-exceptions>
+    </global-exceptions>
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <!--
+    Struts indica :
+     1. Define a "ValidacionForm" como la clase que captura los datos de usuario
+     2. Define a "OperacionAction" como la clase que procesa la petición
+     3. Define a "resultado" como nombre lógico del archivo de "respuesta.jsp"(vista)
+    -->
+
+    <action-mappings>
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+
+        <action name="ValidacionForm" path="/validar" scope="request" type="controladores_action.OperacionAction">
+            <forward name="resultado" path="/resultado.jsp"/>
+        </action>
+   
+    </action-mappings>
+    
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+        
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ==================== -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

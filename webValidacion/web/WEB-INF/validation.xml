@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<!--
+* Proyecto: webValidacion
+* Archivo: validation.xml
+*
+* Para realizar este tipo de validacion debemos utilizar el validador de tipo "required", nombre con el que
+* se encuentra registrado el método de validación correspondiente en el archivo validator-rules.xml.
+* Dado que la validación se va a realizar sobre los campos del objeto ValidacionForm, tendremos  que añadir
+* al archivo validation.xml un elemento <form> asociado al mismo, elemento que deberá estar definido dentro
+* del elemento <formset> que se incluye en el elemento raíz <form-validation> del documento
+-->
+
+
+<form-validation>
+    <global> </global>
+
+    <formset>
+        <!-- An example form -->
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                <arg key="logonForm.password"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9a-zA-Z]*$</var-value>
+                </var>
+            </field>
+        </form>
+
+        <form name="ValidacionForm">
+            
+            <field property="usuario" depends="required">
+                <arg key="ValidacionForm.usuario" />
+            </field>
+            
+            <field property="password" depends="required">
+                <arg key="ValidacionForm.password"/>
+            </field>
+            
+        </form>
+
+    </formset>
+
+    <!-- An example formset for another locale -->
+    <formset language="fr">
+
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+
+        <!-- An example form -->
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                <arg key="logonForm.password"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9a-zA-Z]*$</var-value>
+                </var>
+            </field>
+        </form>
+
+    </formset>
+
+</form-validation>
